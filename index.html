@@ -1,231 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>East Africa Logistics Hub - Logistics & Careers</title>
+    <style>
+        /* === COLOR THEME & FONTS === */
+        :root {
+            --primary: #0f4c81;     /* Bluu ya Bahari/Logistics */
+            --secondary: #00b4d8;   /* Bluu ya Kisasa/Neon */
+            --accent: #06d6a0;      /* Kijani ya Jobs/Uhakika */
+            --bg-dark: #0b1329;     /* Giza jepesi la usiku */
+            --bg-card: #1c2541;     /* Kadi za kisasa */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
 
-<title>East Africa Logistics Hub</title>
+        /* === TOP NAVIGATION BAR (KIOO/GLASS LOOK) === */
+        nav {
+            background: rgba(28, 37, 65, 0.85);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #3b4252;
+            z-index: 1000;
+        }
 
-<style>
+        nav .logo {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--secondary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
 
-*{
-box-sizing:border-box;
-}
+        nav .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
 
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:#f4f7fb;
-color:#333;
-}
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
 
-header{
-background:linear-gradient(135deg,#003366,#0066cc);
-color:white;
-padding:40px 20px;
-text-align:center;
-}
+        nav a:hover {
+            color: var(--secondary);
+        }
 
-header h1{
-font-size:32px;
-margin:10px;
-}
+        /* Kitufe Maalum cha Jobs kwenye Menu */
+        nav .jobs-btn {
+            background-color: rgba(6, 214, 160, 0.15);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
 
-nav{
-background:white;
-padding:15px;
-text-align:center;
-box-shadow:0 2px 5px #ddd;
-}
+        nav .jobs-btn:hover {
+            background-color: var(--accent);
+            color: var(--bg-dark);
+        }
 
-nav a{
-color:#003366;
-text-decoration:none;
-font-weight:bold;
-margin:8px;
-}
+        /* === HERO BANNER SECTION === */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(180deg, rgba(0,180,216,0.15) 0%, rgba(11,19,41,0) 100%);
+            overflow: hidden;
+        }
 
-.hero{
-padding:40px 20px;
-text-align:center;
-}
+        .hero h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--text-light), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.hero button{
-background:#003366;
-color:white;
-padding:12px 25px;
-border:none;
-border-radius:5px;
-}
+        .hero p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
 
-.container{
-padding:20px;
-}
+        .hero .btn-main {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            transition: transform 0.2s;
+        }
 
-.card{
-background:white;
-padding:20px;
-margin:15px 0;
-border-radius:12px;
-box-shadow:0 3px 10px #ddd;
-}
+        .hero .btn-main:hover {
+            transform: translateY(-3px);
+        }
 
-.card h2{
-color:#003366;
-}
+        /* === SEHEMU MPYA: VINGINE AMBAVYO UKUWA HUNA (SERVICES) === */
+        .section-title {
+            text-align: center;
+            font-size: 26px;
+            margin: 50px 0 20px 0;
+            font-weight: 700;
+        }
 
-footer{
-background:#003366;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:20px;
-}
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
 
-</style>
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid #3b4252;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: left;
+            transition: all 0.3s;
+        }
 
+        .service-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .service-card .icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin: 0 0 10px 0;
+            color: var(--secondary);
+        }
+
+        .service-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* === SEHEMU YA CHINI (FOOTER) === */
+        footer {
+            background-color: #060b19;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #3b4252;
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-top: 60px;
+        }
+
+        /* === LAPTOP CONFIGURATION (RESPONSIVE) === */
+        @media (min-width: 768px) {
+            .hero h1 { font-size: 54px; }
+            .hero p { font-size: 18px; }
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr); /* Kwenye laptop zijipange tatu kwa mstari */
+            }
+        }
+    </style>
 </head>
-
-
 <body>
 
-<header>
+    <!-- Bar ya Juu (Navbar) -->
+    <nav>
+        <a href="index.html" class="logo">🌐 EA LOGISTICS HUB</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <!-- LINK HII CHINI NIMESAHIHISHA ILI IFUNGUE FAILI LAKO MOJA KWA MOJA BILA KOSA -->
+            <a href="Jobs.html" class="jobs-btn">💼 Jobs Portal</a>
+        </div>
+    </nav>
 
-<h1>🌍 East Africa Logistics Hub 🚚</h1>
+    <!-- Hero Banner -->
+    <div class="hero">
+        <h1>East Africa Logistics Hub</h1>
+        <p>Connecting supply chains, transport networks, and career opportunities across the East African region. Discover logistics excellence today.</p>
+        <a href="Jobs.html" class="btn-main">🚀 Explore Active Jobs</a>
+    </div>
 
-<p>
-Connecting Transport, Shipping and Supply Chain Solutions
-</p>
+    <!-- Sehemu Mpya: Services tuliyeiongeza -->
+    <h2 class="section-title">Our Hub Specialities</h2>
+    <div class="services-grid">
 
-</header>
+        <!-- Kadi ya 1 -->
+        <div class="service-card">
+            <div class="icon">🚢</div>
+            <h3>Shipping & Freight</h3>
+            <p>Comprehensive tracking, cargo management, and port clearance operations across East African gateways.</p>
+        </div>
 
+        <!-- Kadi ya 2 -->
+        <div class="service-card">
+            <div class="icon">🚛</div>
+            <h3>Transport Logistics</h3>
+            <p>Efficient cross-border trucking solutions, fleet tracking, and supply chain coordination.</p>
+        </div>
 
-<nav>
+        <!-- Kadi ya 3 -->
+        <div class="service-card">
+            <div class="icon">👔</div>
+            <h3>Career Placement</h3>
+            <p>Connecting qualified logistics personnel, drivers, and managers with top-tier supply chain companies.</p>
+        </div>
 
-<a href="#">Home</a>
-<a href="#">Services</a>
-<a href="#">Jobs</a>
-<a href="#">Blog</a>
-<a href="#">Contact</a>
+    </div>
 
-</nav>
-
-
-<section class="hero">
-
-<h2>Your Logistics Information Platform</h2>
-
-<p>
-Learn about clearing, forwarding, shipping,
-transport and supply chain.
-</p>
-
-<button>
-Explore More
-</button>
-
-</section>
-<section class="container">
-
-
-<div class="card">
-
-<h2>🚚 Our Logistics Services</h2>
-
-<p>
-We provide information and solutions about:
-</p>
-
-<ul>
-<li>Clearing and Forwarding</li>
-<li>Import and Export Procedures</li>
-<li>Shipping Documentation</li>
-<li>Transportation Management</li>
-<li>Warehouse Operations</li>
-<li>Supply Chain Management</li>
-</ul>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>📚 Logistics Education</h2>
-
-<p>
-Improve your knowledge about ports, customs,
-freight forwarding and international trade.
-</p>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>💼 Career Opportunities</h2>
-
-<p>
-A platform designed to connect logistics professionals,
-students and companies looking for opportunities.
-</p>
-
-<button>
-Submit CV
-</button>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>📰 Logistics Blog</h2>
-
-<p>
-Read articles about shipping, transport,
-warehouse and supply chain trends.
-</p>
-
-<button>
-Read Articles
-</button>
-
-</div>
-
-
-
-<div class="card">
-
-<h2>📞 Contact Us</h2>
-
-<p>
-Email: contact@ealogisticshub.com
-</p>
-
-<p>
-Location: East Africa
-</p>
-
-</div>
-
-
-</section>
-<footer>
-
-<h3>East Africa Logistics Hub</h3>
-
-<p>
-Transport | Shipping | Clearing & Forwarding | Supply Chain
-</p>
-
-<p>
-© 2026 East Africa Logistics Hub. All Rights Reserved.
-</p>
-
-</footer>
-
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 East Africa Logistics Hub. All Rights Reserved. Powered by SPCK Editor & GitHub.</p>
+    </footer>
 
 </body>
 </html>
